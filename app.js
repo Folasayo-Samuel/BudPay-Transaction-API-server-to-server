@@ -5,7 +5,7 @@ const app = express();
 app.use(express.json());
 
 const BUDPAY_API_BASE_URL = "https://api.budpay.com/api/s2s";
-const SECRET_KEY = "sk_test_8blwbw6lalioquhbcvlooruz2qcsyksgmzsde6k";
+const SECRET_KEY = "";
 
 app.post("/test/encryption", async (req, res) => {
   try {
