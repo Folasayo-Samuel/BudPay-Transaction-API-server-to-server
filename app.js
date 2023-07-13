@@ -86,43 +86,6 @@ async function initializeTransaction(transactionPayload) {
   }
 }
 
-app.post("/mastercard-payment/3ds2auth", async (req, res) => {
-  try {
-    const response = req.body;
-    console.log(response.data);
-
-    const { url, method, payload } = response._links;
-    const dataToSend = {};
-
-    payload.forEach((param) => {
-      dataToSend[param] = response[param];
-    });
-
-    const responseFromLinks = await axios({
-      method,
-      url,
-      data: dataToSend,
-    });
-
-    console.log(responseFromLinks.data);
-    res.sendStatus(200);
-  } catch (error) {
-    console.error(error);
-    res.sendStatus(500);
-  }
-});
-
-app.post("/mastercard-payment/authpayer", (req, res) => {
-  try {
-    const response = req.body;
-    console.log(response);
-    res.sendStatus(200);
-  } catch (error) {
-    console.error(error);
-    res.sendStatus(500);
-  }
-});
-
 const PORT = 3000;
 
 app.listen(PORT, () => {
